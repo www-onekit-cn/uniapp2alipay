@@ -2,11 +2,15 @@ export default class uni {
  
   ///////////////// basic ///应用级事件/////////////////////////////
   static base64ToArrayBuffer(base64) {
-    return my.base64ToArrayBuffer(base64);
+    base64 = base64.replace(/\s/g, '+');
+    let commonContent = Buffer.from(base64, 'base64');
+    return commonContent;
   }
   static arrayBufferToBase64(arrayBuffer) {
-    return my.arrayBufferToBase64(arrayBuffer);
+    let base64Content = Buffer.from(arrayBuffer).toString('base64');
+    return base64Content;
   }
+
   static getUpdateManager(object) {
     return my.getUpdateManager(object);
   }
@@ -15,7 +19,7 @@ export default class uni {
   }
  
   static onPageNotFound(object) {
-    return my.onPageNotFound(object);
+    console.alert("支付宝不支持");
   }
   static onError(object) {
     return my.onError(object);
@@ -27,7 +31,7 @@ export default class uni {
     return my.onAppHide(object);
   }
   static offPageNotFound(object) {
-    return my.offPageNotFound(object);
+    console.alert("支付宝不支持")
   }
   static offError(object) {
     return my.offError(object);
@@ -115,8 +119,19 @@ export default class uni {
   static downloadFile(object) {
     return my.downloadFile(object)
   }
-  static uploadFile(object) {
-    return my.uploadFile(object)
+  static uploadFile(object) { 
+    my.uploadFile({
+      url: object.url,
+      filePath: object.filePath,
+      fileName: object.name,
+      fileType: object.fileType,
+      header:  object.header,
+      formData: object.formData,
+      success: object.success,
+      fail: object.fail,
+      complete: object.complete
+    });
+  
   }
   //////////////////////////////websocket///////////////////////////////////////
   static connectSocket(object) {
@@ -143,38 +158,49 @@ export default class uni {
 
   ////////////////////////////////mDNS////////////////////////////////////////////
   static stopLocalServiceDiscovery(object) {
-    return my.stopLocalServiceDiscovery(object);
+    // return my.stopLocalServiceDiscovery(object);
+    console.alert("支付宝不支持");
   }
   static startLocalServiceDiscovery(object) {
-    return my.startLocalServiceDiscovery(object);
+    // return my.startLocalServiceDiscovery(object);
+    console.alert("支付宝不支持");
   }
   static onLocalServiceResolveFail(callback) {
-    return my.onLocalServiceResolveFail(callback);
+    // return my.onLocalServiceResolveFail(callback);
+    console.alert("支付宝不支持");
   }
   static onLocalServiceLost(callback) {
-    return my.onLocalServiceLost(callback);
+    // return my.onLocalServiceLost(callback);
+    console.alert("支付宝不支持");
   }
   static onLocalServiceFound(callback) {
-    return my.onLocalServiceFound(callback);
+    // return my.onLocalServiceFound(callback);
+    console.alert("支付宝不支持");
   }
   static onLocalServiceDiscoveryStop(callback) {
-    return my.onLocalServiceDiscoveryStop(callback);
+    // return my.onLocalServiceDiscoveryStop(callback);
+    console.alert("支付宝不支持");
   }
   static offLocalServiceResolveFail(callback) {
-    return my.offLocalServiceResolveFail(callback);
+    // return my.offLocalServiceResolveFail(callback);
+    console.alert("支付宝不支持");
   }
   static offLocalServiceLost(callback) {
-    return my.offLocalServiceLost(callback);
+    // return my.offLocalServiceLost(callback);
+    console.alert("支付宝不支持");
   }
   static offLocalServiceFound(callback) {
-    return my.offLocalServiceFound(callback);
+    // return my.offLocalServiceFound(callback);
+    console.alert("支付宝不支持");
   }
   static offLocalServiceDiscoveryStop(callback) {
-    return my.offLocalServiceDiscoveryStop(callback);
+    // return my.offLocalServiceDiscoveryStop(callback);
+    console.alert("支付宝不支持");
   }
   ///////////////////////////UDP通信////////////////////////////////////////
   static createUDPSocket(){
-    return my.createUDPSocket();
+    // return my.createUDPSocket();
+    console.alert("支付宝不支持");
   }
   ///////// Open Interface ///////////////////////////////////////////////
   static checkSession() {
