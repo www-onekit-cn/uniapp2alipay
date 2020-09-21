@@ -152,7 +152,7 @@ export default class uni {
   static sendSocketMessage(object) {
     return my.sendSocketMessage(object)
   }
-  static closeSocket(object) {
+  static closeSocket(object) {//code//reason参数没完成
     return my.closeSocket(object)
   }
 
@@ -499,7 +499,7 @@ export default class uni {
     });
   };
   ////////// Router ///////////////////////////////////////////
-  static navigateTo(object) {
+  static navigateTo(object) {//events参数未完成
     return my.navigateTo(object);
   }
   static redirectTo(object) {
@@ -560,7 +560,7 @@ export default class uni {
     return my.clearStorageSync(object)
   }
     /////////位置/// Location ///////////////
-    static getLocation(object) {
+    static getLocation(object) {///altitude参数未完成
       return my.getLocation(object)
     }
     static chooseLocation(object) {
@@ -584,9 +584,9 @@ static getImageInfo(object) {
   return my.getImageInfo(object)
 }
 static saveImageToPhotosAlbum(object) {
-  return my.saveImageToPhotosAlbum(object)
+  console.alert("未开放")
 }
- static compressImage(object) {
+ static compressImage(object) {//src//quality参数未完成
   return my.compressImage(object)
 }
 static chooseMessageFile(object){
@@ -613,6 +613,7 @@ static chooseMedia(object) {
   return my.chooseMedia(object)
 }
 static saveVideoToPhotosAlbum(object) {
+  //未完成
   return my.saveVideoToPhotosAlbum(object)
 }
 static getVideoInfo(object){
@@ -624,7 +625,7 @@ static compressVideo(object){
 static openVideoEditor(object){
   return my.openVideoEditor(object)
 }
-                    ////////////////////////视频，相机，直播组件控制///////////////////////////////
+                    ////////////////////////视频，相机，直播组件控制/////////都未完成//////////////////////
 static createVideoContext(object) {
   return my.createVideoContext(object)
 }
@@ -693,7 +694,7 @@ static onGyroscopeChange(object) {
 static stopGyroscope(object) {
   return my.offGyroscope(object);
 }
-static startGyroscope(object) {
+static startGyroscope(object) {///未完成
   return my.startGyroscope(object);
 }
 //////////////////////电话////////////////////
@@ -874,9 +875,48 @@ static onBluetoothDeviceFound(object) {
 static onBluetoothAdapterStateChange(object) {
   return my.onBluetoothAdapterStateChange(object);
 }
-static getConnectedBluetoothDevices(object) {
-  return my.getConnectedBluetoothDevices(object);
+static getConnectedBluetoothDevices(uni_object) {
+    if(!uni_object){
+      return
+    }
+      var uni_services=uni_object.services
+   var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_services){
+    my_object.deviceId=uni_services
+  }
+  if (uni_success) {
+  my_object.success = uni_success
 }
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.getConnectedBluetoothDevices(my_object)
+}
+////
 static getBluetoothDevices(object) {
   return my.getBluetoothDevices(object);
 }
@@ -887,7 +927,7 @@ static closeBluetoothAdapter(object) {
   return my.closeBluetoothAdapter(object);
 }
 ////低功耗蓝牙/////
-static setBLEMTU(object){
+static setBLEMTU(object){///未完成
   return my.setBLEMTU(object)
 }
 static writeBLECharacteristicValue(object){
@@ -897,9 +937,9 @@ static readBLECharacteristicValue(object){
   return my.readBLECharacteristicValue(object)
 }
 static onBLEConnectionStateChange(object){
-  return my.onBLEConnectionStateChange(object)
+  return my.onBLEConnectionStateChanged(object)
 }
-static onBLECharacteristicValueChange(object){
+static onBLECharacteristicValueChange(object){//characteristicld//value参数未完成
   return my.onBLECharacteristicValueChange(object)
 }
 static notifyBLECharacteristicValueChange(object){
@@ -908,17 +948,17 @@ static notifyBLECharacteristicValueChange(object){
 static getBLEDeviceServices(object){
   return my.getBLEDeviceServices(object)
 }
-static getBLEDeviceRSSI(object){
+static getBLEDeviceRSSI(object){////未完成
   return my.getBLEDeviceRSSI(object)
 }
 static getBLEDeviceCharacteristics(object){
   return my.getBLEDeviceCharacteristics(object)
 }
-static createBLEConnection(object){
-  return my.createBLEConnection(object)
+static createBLEConnection(object){//timeout未完成
+  return my.connectBLEDevice(object)
 }
 static closeBLEConnection(object){
-  return my.closeBLEConnection(object)
+  return my.disconnectBLEDevice(object)
 }
 
  ////////////// iBeacon //////////////////
