@@ -671,7 +671,7 @@ static onAccelerometerChange(callback) {
   return my.onAccelerometerChange(callback);
 }
 static stopAccelerometer(object) {
-  return my.stopAccelerometer(object);
+  return my.offAccelerometerChange(object);
 }
 static startAccelerometer(object) {
   return my.startAccelerometer(object);
@@ -681,7 +681,7 @@ static onCompassChange(callback) {
   return my.onCompassChange(callback);
 }
 static stopCompass(object) {
-  return my.stopCompass(object);
+  return my.offCompass(object);
 }
 static startCompass(object) {
   return my.startCompass(object);
@@ -691,18 +691,98 @@ static onGyroscopeChange(object) {
   return my.onGyroscopeChange(object);
 }
 static stopGyroscope(object) {
-  return my.stopGyroscope(object);
+  return my.offGyroscope(object);
 }
 static startGyroscope(object) {
   return my.startGyroscope(object);
 }
 //////////////////////电话////////////////////
-static makePhoneCall = function(object) {
-  return my.makePhoneCall(object);
+static makePhoneCall(uni_object) {
+  if(!uni_object){
+    return
+  }
+  var uni_phoneNumber=uni_object.getPhoneNumber
+   var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_phoneNumber){
+    my_object.number=uni_phoneNumber
+  }
+  if (uni_success) {
+  my_object.success = uni_success
 }
-//
-static scanCode = function(object) {
-  return my.scanCode(object);
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.makePhoneCall(my_object)
+}
+/////////////////////////////////////
+static scanCode(uni_object) {
+  if(!uni_object){
+    return
+  }
+   var uni_onlyFromCamera=uni_object.onlyFromCamera
+   var uni_scanType=uni_object.scanType
+   var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+   ////
+  var my_object={}
+  if(uni_onlyFromCamera){
+    my_object.hideAlbum=uni_onlyFromCamera
+  }
+  if(uni_scanType){
+    my_object.scanType=uni_scanType
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.scan(my_object)
 }
 //
 static getClipboardData(object) {
@@ -712,9 +792,48 @@ static setClipboardData(object) {
   return my.setClipboardData(object);
 }
 //
-static setScreenBrightness(object) {
-  return my.setScreenBrightness(object);
+static setScreenBrightness(uni_object) {
+          if(!uni_object){
+            return
+          }
+     var uni_value=uni_object.value
+   var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_value){
+    my_object.brightness=uni_value
+  }
+  if (uni_success) {
+  my_object.success = uni_success
 }
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.setScreenBrightness(my_object)
+}
+////////
 static setKeepScreenOn(object) {
   return my.setKeepScreenOn(object);
 }
