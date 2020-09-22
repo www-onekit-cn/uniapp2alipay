@@ -92,25 +92,186 @@ export default class uni {
   }
   //////////////////// File //////////
   static getFileSystemManager(object) {
-    return my.getFileSystemManager(object)
+    // return my.getFileSystemManager(object)
+    console.alert("本平台不支持getFileSystemManager")
   }
-  static getFileInfo(object) {
-    return my.getFileInfo(object)
+  static getFileInfo(uni_object) {
+   if(!uni_object){
+     return
+   }
+   var uni_FilePath=uni_object.filePath
+var uni_digestAlgorithm=uni_object.digestAlgorithm
+    var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_FilePath){
+    my_object.apFilePath=uni_FilePath
   }
-  static removeSavedFile(object) {
-    return my.removeSavedFile(object)
+  if(uni_digestAlgorithm){
+     my_object.digestAlgorithm=uni_digestAlgorithm
   }
-  static getSavedFileInfo(object) {
-    return my.getSavedFileInfo(object)
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
   }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.getFileInfo(my_object)
+  } 
+  //
+ static removeSavedFile (uni_object) {
+   if(!uni_object){
+     return
+   }
+   var uni_FilePath=uni_object.filePath
+    var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_FilePath){
+    my_object.apFilePath=uni_FilePath
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.removeSavedFile (my_object)
+  } 
+  //
+  static getSavedFileInfo(uni_object) {
+   if(!uni_object){
+     return
+   }
+   var uni_FilePath=uni_object.filePath
+    var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_FilePath){
+    my_object.apFilePath=uni_FilePath
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.getSavedFileInfo(my_object)
+  } 
+  //
   static getSavedFileList(object) {
     return my.getSavedFileList(object)
   }
   static openDocument(object) {
     return my.openDocument(object)
   }
-  static saveFile(object) {
-    return my.saveFile(object);
+  static saveFile(uni_object) {
+   if(!uni_object){
+     return
+   }
+   var uni_tempFilePath=uni_object.tempFilePath
+    var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_tempFilePath){
+    my_object.apFilePath=uni_tempFilePath
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.saveFile(my_object)
+
   } 
   //////////////// Network ///////////////
   static request(object) {
@@ -444,7 +605,7 @@ export default class uni {
     return my.requestPayment(object);
   }
   static authorize(object) {
-    return my.authorize(object)
+    return my.getAuthCode(object)
   }
   static openSetting(object) {
     return my.openSetting(object)
@@ -527,6 +688,13 @@ export default class uni {
   }
   static getShareInfo(object) {
     return my.getShareInfo(object)
+  }
+  static share(object){
+    console.alert("本平台不支持")
+  }
+  static shareWithSystem(object){
+        console.alert("本平台不支持")
+
   }
   ////////数据缓存/////// Storage //////////////
   static setStorage(object) {
@@ -977,96 +1145,145 @@ static stopBeaconDiscovery(object) {
 static startBeaconDiscovery(object) {
   return my.startBeaconDiscovery(object);
 }
-//////////////Wi-Fi/////////////
+
+//////////////Wi-Fi//////////支付宝不支持wifi///
 static stopWifi(object) {
-  return my.stopWifi(object);
+  // return my.stopWifi(object);
+  console.alert("支付宝暂不支持stopWifi")
 }
 static startWifi(object) {
-  return my.startWifi(object);
+  // return my.startWifi(object);
+    console.alert("支付宝暂不支持startWifi")
+
 }
 static setWifiList(object) {
-  return my.setWifiList(object);
+  // return my.setWifiList(object);
+    console.alert("支付宝暂不支持setWifiList")
+
 }
 static onWifiConnected(object) {
-  return my.onWifiConnected(object);
+  // return my.onWifiConnected(object);
+    console.alert("支付宝暂不支持onWifiConnected")
+
 }
 static onGetWifiList(object) {
-  return my.onGetWifiList(object);
+  // return my.onGetWifiList(object);
+    console.alert("支付宝暂不支持onGetWifiList")
+
 }
 static offWifiConnected(callback){
-  return my.offWifiConnected(callback)
+  // return my.offWifiConnected(callback)
+    console.alert("支付宝暂不支持offWifiConnected")
+
 }
 static offGetWifiList(callback){
-  return my.offGetWifiList(callback)
+  // return my.offGetWifiList(callback)
+    console.alert("支付宝暂不支持offGetWifiList")
+
 }
 static getWifiList(object) {
-  return my.getWifiList(object);
+  // return my.getWifiList(object);
+    console.alert("支付宝暂不支持getWifiList")
+
 }
 static getConnectedWifi(object) {
-  return my.getConnectedWifi(object);
+  // return my.getConnectedWifi(object);
+    console.alert("支付宝暂不支持getConnectedWifi")
+
 }
 static connectWifi(object) {
-  return my.connectWifi(object);
+  // return my.connectWifi(object);
+    console.alert("支付宝暂不支持connectWifi")
+
 }
 /////////////////电量/////////////////
-static getBatteryInfoSync(object) {
-  return my.getBatteryInfoSync(object);
+static getBatteryInfoSync() {
+  return my.getBatteryInfoSync();
 }
-static getBatteryInfo(result) {
-  return my.getBatteryInfo(object);
+static getBatteryInfo() {
+  return my.getBatteryInfo();
 }
 static getBatteryInfo(object) {
   return my.getBatteryInfo(object);
 }
 /////////////////////NFC/////////
  static stopHCE(object) {
-  return my.stopHCE(object);
+  // return my.stopHCE(object);
+      console.alert("支付宝暂不支持stopHCE")
+
 }
 static startHCE(object) {
-  return my.startHCE(object);
+  // return my.startHCE(object);
+        console.alert("支付宝暂不支持startHCE")
+
 }
 static sendHCEMessage(object) {
-  return my.sendHCEMessage(object);
+  // return my.sendHCEMessage(object);
+        console.alert("支付宝暂不支持sendHCEMessage")
+
 }
 static onHCEMessage(object) {
-  return my.onHCEMessage(object);
+  // return my.onHCEMessage(object);
+        console.alert("支付宝暂不支持onHCEMessage")
+
 }
 static offHCEMessage(callback){
-return my.offHCEMessage(callback)
+// return my.offHCEMessage(callback)
+      console.alert("支付宝暂不支持offHCEMessage")
+
 }
 static getNFCAdapter(){
-  return my.getNFCAdapter()
+  // return my.getNFCAdapter()
+        console.alert("支付宝暂不支持getNFCAdapter")
+
 }
 static getHCEState(object) {
-  return my.getHCEState(object);
+  // return my.getHCEState(object);
+        console.alert("支付宝暂不支持getHCEState")
+
 }
-///////////////////////////
+//////////////////设备方向/////////
 
 static onDeviceMotionChange(object) {
-  return my.onDeviceMotionChange(object);
+  // return my.onDeviceMotionChange(object);
+          console.alert("支付宝暂不支持onDeviceMotionChange")
+
 }
 static stopDeviceMotionListening(object) {
-  return my.stopDeviceMotionListening(object);
+  // return my.stopDeviceMotionListening(object);
+            console.alert("支付宝暂不支持stopDeviceMotionListening")
+
 }
 static startDeviceMotionListening(object) {
-  return my.startDeviceMotionListening(object);
+  // return my.startDeviceMotionListening(object);
+            console.alert("支付宝暂不支持startDeviceMotionListening")
+
 }
 static offDeviceMotionChange(callback) {
-  return my.offDeviceMotionChange(callback);
+  // return my.offDeviceMotionChange(callback);
+            console.alert("支付宝暂不支持offDeviceMotionChange")
+
 }
 ////////生物认证////////
 static startSoterAuthentication(object) {
-  return my.startSoterAuthentication(object)
+  // return my.startSoterAuthentication(object)
+   console.alert("支付宝暂不支持startSoterAuthentication")
+
 }
 static checkIsSupportSoterAuthentication(object) {
-  return my.checkIsSupportSoterAuthentication(object)
+  // return my.checkIsSupportSoterAuthentication(object)
+     console.alert("支付宝暂不支持checkIsSupportSoterAuthentication")
+
 }
 static checkIsSoterEnrolledInDevice(object) {
-  return my.checkIsSoterEnrolledInDevice(object)
+  // return my.checkIsSoterEnrolledInDevice(object)
+     console.alert("支付宝暂不支持checkIsSoterEnrolledInDevice")
+
 }
   ////////////// Worker ///////////////
   static createWorker(path) {
-    return new WORKER(path);
+    // return new WORKER(path);
+    console.alert("支付宝暂不支持createWorker")
   }
   /////////////////键盘////////////////////
   static hideKeyboard(object) {
@@ -1079,30 +1296,217 @@ static checkIsSoterEnrolledInDevice(object) {
 
 
   ////////////// UI ////////////////
-  static showActionSheet(object) {
-    return my.showActionSheet(object);
+  static showActionSheet(uni_object) {
+      if(!uni_object){
+        return
+      }
+      var uni_itemList=uni_object.itemList
+      var uni_itemColor=uni_object.itemColor
+      var uni_success=uni_object.success
+      var uni_fail=uni_object.fail
+      var uni_complete=uni_object.complete
+       uni_object=null;
+  ////
+      var my_object={}
+  if(uni_itemList){
+    my_object.items=uni_itemList
   }
+  if(uni_itemColor){
+    my_object.itemColor=uni_itemColor
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.showActionSheet(my_object)
+  }
+  //
  static redirectTo(object) { return my.redirectTo(object) }
    static redirectTo(object) { return my.redirectTo(object) }
 
   static hideLoading() {
     return my.hideLoading()
   }
-  static showLoading(object) {
-    return my.showLoading(object);
+  static showLoading(uni_object) {
+   if(!uni_object){
+      return
+    }
+  var uni_title=uni_object.title
+ var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_title){
+    my_object.content=uni_title
   }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.showLoading(my_object)
+  }
+  /////
   static hideToast() {
     return my.hideToast();
   }
-  static showToast(object) {
-    return my.showToast(object);
+  /////
+  static showToast(uni_object) {
+    if(!uni_object){
+      return
+    }
+    var uni_title=uni_object.title
+    var uni_icon=uni_object.icon
+     var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_title){
+    my_object.content=uni_title
   }
-  static showModal(object) {
-    return my.showModal(object);
+  if(uni_icon){
+    my_object.type=uni_icon
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.showToast(my_object)
+  }
+  /***************/
+
+  static showModal(uni_object) {
+    if(!uni_object)
+    var uni_title=uni_object.title
+    var uni_content=uni_object.content
+    var uni_showCancel=uni_object.showCancel
+    var uni_cancelText=uni_object.cancelText
+    var uni_cancelColor=uni_object.cancelColor
+    var uni_confirmText=uni_object.confirmText
+    var uni_confirmColor=uni_object.confirmColor
+     var uni_success=uni_object.success
+ var uni_fail=uni_object.fail
+ var uni_complete=uni_object.complete
+  uni_object=null;
+  ////
+  var my_object={}
+  if(uni_title){
+    my_object.title=uni_title
+  }
+  if(uni_content){
+    my_object.content=uni_content
+  }
+  if(uni_showCancel){
+    my_object.showCancel=uni_showCancel
+  }
+  if(uni_cancelText){
+    my_object.cancelButtonText=uni_cancelText
+  }
+  if(uni_cancelColor){
+    my_object.cancelColor=uni_cancelColor
+  }
+  if(uni_confirmText){
+    my_object.confirmButtonText=uni_confirmText
+  }
+  if(uni_confirmColor){
+    my_object.confirmColor=uni_confirmColor
+  }
+  if (uni_success) {
+  my_object.success = uni_success
+}
+if (uni_fail) {
+  my_object.fail = uni_fail
+}
+if (uni_complete) {
+  my_object.complete = uni_complete
+}
+my_object.success = function (my_res) {
+  if (uni_success) {
+    uni_success(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+my_object.fail = function (my_res) {
+  if (uni_fail) {
+    uni_fail(my_res);
+  }
+  if (uni_complete) {
+    uni_complete(my_res);
+  }
+};
+  my.confirm(my_object)
   }
   //////////////////////////////////////
   static setNavigationBarColor(object) {
-    return my.setNavigationBarColor(object)
+    // return my.setNavigationBarColor(object)
   }
   static hideNavigationBarLoading(object) {
     return my.hideNavigationBarLoading(object)
@@ -1111,9 +1515,9 @@ static checkIsSoterEnrolledInDevice(object) {
     return my.showNavigationBarLoading(object)
   }
   static hideHomeButton(object){
-    return my.hideHomeButton(object)
+    return my.hideBackHome(object)
   }
-///////////////////////////////////
+///////////////设置TabBar////////////////////
 static setTabBarItem(object) {
   return my.setTabBarItem(object)
 }
@@ -1138,6 +1542,9 @@ static hideTabBarRedDot(object) {
 static showTabBarRedDot(object) {
   return my.showTabBarRedDot(object)
 }
+static onTabBarMidButtonTap(CALLBACK){
+  console.alert("本平台暂不支持onTabBarMidButtonTap")
+}
 ///////////////////////////////////////////////
 static setBackgroundTextStyle(object) {
     return my.setBackgroundTextStyle(object)
@@ -1155,10 +1562,13 @@ static pageScrollTo(object) {
 }
 //////////////////窗口////////////////////////
 static offWindowResize(object) {
-  return my.offWindowResize(object)
+  // return my.offWindowResize(object)
+  console.alert("支付宝不支持")
 }
 static onWindowResize(object) {
-  return my.onWindowResize(object)
+  // return my.onWindowResize(object)
+    console.alert("支付宝不支持")
+
 }
 /////////////////字体/////////////////////////
 static loadFontFace(object) {
@@ -1176,7 +1586,8 @@ static startPullDownRefresh(object) {
 }
 //////////////////////////////////////////
 static createOffscreenCanvas() {
-  return my.createOffscreenCanvas();
+  // return my.createOffscreenCanvas();
+  console.alert("本平台不支持createOffscreenCanvas")
 }
 static createContext() {
   return new Context();
@@ -1185,20 +1596,34 @@ static createCanvasContext(canvasId,ui) {
   return new CanvasContext(my.createCanvasContext(canvasId));
 }
 static canvasToTempFilePath(object) {
-  return my.canvasToTempFilePath(object);
+  // return my.canvasToTempFilePath(object);
+      console.alert("本平台不支持canvasToTempFilePath")
+
 }
 static canvasPutImageData(object) {
-  return my.canvasPutImageData(object)
+  // return my.canvasPutImageData(object)
+    console.alert("本平台不支持canvasPutImageData")
+
+
 };
 static canvasGetImageData(object) {
-  return my.canvasGetImageData(object)
+  // return my.canvasGetImageData(object)
+ console.alert("本平台不支持canvasGetImageData")
+
 };
 ////////////////////////广告//////////////////
 static createRewardedVideoAd(object){
-  return my.createRewardedVideoAd(object)
+  // return my.createRewardedVideoAd(object)
+   console.alert("本平台不支持createRewardedVideoAd")
 }
 static createInterstitialAd(object){
-  return my.createInterstitialAd(object)
+  // return my.createInterstitialAd(object)
+   console.alert("本平台不支持createInterstitialAd")
+
+}
+
+static getProvider(object){
+  console.alert("本平台不支持getProvider")
 }
 ////////////////////////////////
 static requestSubscribeMessage(object){
@@ -1206,7 +1631,7 @@ static requestSubscribeMessage(object){
 }
 //////////////////////////////////////////
   static setNavigationBarTitle(object) {
-    return my.setNavigationBarTitle(object);
+    return my.setNavigationBar(object);
   };
 
   
@@ -1214,10 +1639,13 @@ static requestSubscribeMessage(object){
     return my.setTopBarText(object)
   }
   static nextTick(object) {
-    return my.nextTick(object)
+    // return my.nextTick(object)
+    console.alert("支付宝不支持nextTick")
   }
   static getMenuButtonBoundingClientRect(object) {
-    return my.getMenuButtonBoundingClientRect(object)
+    // return my.getMenuButtonBoundingClientRect(object)
+        console.alert("支付宝不支持getMenuButtonBoundingClientRect")
+
   }
  
 
@@ -1302,4 +1730,15 @@ function ai_init(api) {
  uni.ai[api] = (object) => {
     return uni_ai.run(api, object);
   }
+}
+
+
+function getSubNVueById(subNvueId){
+  
+}
+function getCurrentSubNVue(){
+
+}
+function requireNativePlugin(PluginName){
+
 }
