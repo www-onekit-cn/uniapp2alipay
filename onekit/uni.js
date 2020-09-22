@@ -667,6 +667,9 @@ export default class uni {
   static getWeRunData(object) {
     return my.getWeRunData(object)
   }
+  static preloadPage(object){
+   console.alert("本平台不支持")
+ }
   static reportMonitor(name, value) {
     var js_code = getApp().onekit.jscode;
     my.httpRequest({
