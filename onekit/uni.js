@@ -45,8 +45,9 @@ export default class uni {
     return my.offAppHide(object);
   }
 
-  static setEnableDebug(object) {
-    return my.setEnableDebug(object);
+  static setEnableDebug(object) {//调试
+    // return my.setEnableDebug(object);
+    console.alert("本平台不支持setEnableDebug")
   }
   static getLogManager(object) {
     return my.getLogManager(object);
@@ -85,10 +86,12 @@ export default class uni {
  
   /////////////////// Ext //////////////
   static getExtConfigSync(object) {
-    return my.getExtConfigSync(object)
+    // return my.getExtConfigSync(object)
+    console.alert("本平台暂不支持getExtConfigSync")
   }
   static getExtConfig(object) {
-    return my.getExtConfig(object)
+    // return my.getExtConfig(object)
+    console.alert("本平台暂不支持getExtConfig")
   }
   //////////////////// File //////////
   static getFileSystemManager(object) {
@@ -592,9 +595,12 @@ my_object.fail = function (my_res) {
     return my.navigateBackMiniProgram(object)
   }
   static getAccountInfoSync(object) {
-    return my.getAccountInfoSync(object)
+    // return my.getAccountInfoSync(object)
+    console.alert("本平台不支持getAccountInfoSync")
   }
-
+static getRunData(object){//////////支付宝支持的运动
+  return my.getRunData(object)
+}
   static reportMonitor(object) {
     return my.reportMonitor(object)
   }
@@ -616,11 +622,15 @@ my_object.fail = function (my_res) {
   static chooseAddress(object) {
     return my.chooseAddress(object)
   }
-  static openCard(object) {
+  static openCard(object) {//微信支持的卡券
     return my.openCard(object);
   }
+  static openCardDetail(object){//支付宝支持的卡券
+    return my.openCardDetail(object)
+  }
   static chooseInvoiceTitle(object) {
-    return my.chooseInvoiceTitle(object)
+    // return my.chooseInvoiceTitle(object)
+  console.alert("本平台不支持chooseInvoiceTitle")
   }
   static addCard = function(object) {
     return my.addCard(object);
@@ -1627,7 +1637,8 @@ static getProvider(object){
 }
 ////////////////////////////////
 static requestSubscribeMessage(object){
-  return requestSubscribeMessage(object)
+  // return requestSubscribeMessage(object)
+  console.alert("本平台不支持requestSubscribeMessage")
 }
 //////////////////////////////////////////
   static setNavigationBarTitle(object) {
@@ -1715,6 +1726,19 @@ static createVideoContext(videoId,ui) {
     return my.createIntersectionObserver(object)
   }
   ///////////////////////////
+ static getSubNVueById(subNvueId){
+  
+}
+static getCurrentSubNVue(){
+
+}
+static requireNativePlugin(PluginName){
+
+}
+
+static report( eventName , options){//统计
+  return my.reportAnalytics(eventName,options)
+}
 
   ///////////////////////////////////
   static createARCameraContext(object) {
@@ -1733,12 +1757,3 @@ function ai_init(api) {
 }
 
 
-function getSubNVueById(subNvueId){
-  
-}
-function getCurrentSubNVue(){
-
-}
-function requireNativePlugin(PluginName){
-
-}
